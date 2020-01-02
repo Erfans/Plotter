@@ -323,7 +323,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    var width = window.innerWidth - 100
+    var width = $('#canvas-container').width()
     var height = window.innerHeight - 200
 
     // initial the plotter
