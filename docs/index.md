@@ -1,5 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-simplecolorpicker@0.3.1/jquery.simplecolorpicker.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/expr-eval@2.0.2/dist/bundle.min.js"></script>
 <script src="https://unpkg.com/konva@4.0.0/konva.min.js"></script>
@@ -9,7 +8,7 @@
     <form name="plotter" method="post" class="form-inline">
         <label class="mr-2 mt-2 required" for="plotter_function">f(x):</label>
         <input type="text" id="plotter_function" name="plotter_function"
-               required="required" class="mr-2 mt-2 form-control" value="sin x">
+               required="required" class="mr-2 mt-2 form-control" value="sin x"/>
 
         <label class="sr-only mr-2 mt-2 required" for="plotter_color">color</label>
         <select id="plotter_color" name="plotter_color" class="form-control">
@@ -27,8 +26,6 @@
             <option value="#800000">Maroon</option>
             <option value="#DC143C">Crimson</option>
         </select>
-
-        <script>$('#plotter_color').simplecolorpicker({picker: true,})</script>
 
         <button id="plotter_draw" type="button" class="btn btn-primary mx-2 mt-2">draw</button>
         <button id="plotter_clear" type="button" class="btn btn-danger mr-2 mt-2">clear</button>
@@ -252,8 +249,8 @@
 
 <script>
 
-  const defaultColor = '888888';
-  let plotter;
+  const defaultColor = '888888'
+  let plotter
 
   // convert hash to js object
   function deserializeHash (hash) {
@@ -324,9 +321,9 @@
     updateUrl(plotter)
   }
 
-  $(function () {
+  document.addEventListener('DOMContentLoaded', function () {
 
-    var width = $('#canvas-container').width()
+    var width = window.innerWidth - 100
     var height = window.innerHeight - 200
 
     // initial the plotter
