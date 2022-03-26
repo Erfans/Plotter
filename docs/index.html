@@ -322,10 +322,14 @@
 
         hash = hash || location.hash;
 
+        if (hash.startsWith('#!')) {
+            hash = hash.substring(2);
+        }
+
         let parts = hash.split('-and-');
         let obj = {};
 
-        for (let i = 1; i < parts.length; i++) {
+        for (let i = 0; i < parts.length; i++) {
             let part = parts[i];
             let subParts = part.split('~');
 
