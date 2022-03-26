@@ -8,17 +8,34 @@
     <meta name="keywords" content="plot, function, draw math">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/tkrotoff/jquery-simplecolorpicker@0.3.1/jquery.simplecolorpicker.css">
-
     <style>
-        .simplecolorpicker.icon,
-        .simplecolorpicker span.color {
-            height: 20px;
-            border-radius: 2px;
-        }
+      .simplecolorpicker.icon,
+      .simplecolorpicker span.color {
+        height: 20px;
+        border-radius: 2px;
+      }
     </style>
 
 </head>
@@ -294,7 +311,7 @@
 <!-- Plotter -->
 <script src="https://cdn.jsdelivr.net/npm/expr-eval@2.0.2/dist/bundle.min.js"></script>
 <script src="https://unpkg.com/konva@4.0.0/konva.min.js"></script>
-<script src="dist/bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/erfans/plotter/dist/bundle.js"></script>
 
 <script>
     const defaultColor = '888888';
@@ -380,15 +397,19 @@
         plotter = new Plotter('canvas-container', width, height, {minX: -5, maxX: 5, minY: -5, maxY: 5});
 
         // zoom
-        $(plotter.getContainer).on('mousewheel DOMMouseScroll', function (e) {
+        $(plotter.getContainer).on('mousewheel DOMMouseScroll touchmove', function (e) {
             // preventing the page scroll
             e.preventDefault();
+            e.stopPropagation();
+            e.returnValue = false;
 
             let delta = navigator.userAgent.toLowerCase().indexOf('firefox') > -1 ?
                 e.originalEvent.detail > 0 ? 1 / 1.2 : 1.2 :
                 e.originalEvent.wheelDelta < 0 ? 1 / 1.2 : 1.2;
 
             plotter.zoom(delta);
+
+            return false;
         });
 
         // draw plot on pressing draw button
