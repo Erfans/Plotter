@@ -48,15 +48,11 @@
 
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHB8Z8L"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8 col-12">
-            <div class="my-3 justify-content-center">
-                <form name="plotter" method="post" class="form-inline">
+            <div class="my-3 justify-content-center clearfix">
+                <form name="plotter" method="post" class="form-inline float-left">
                     <label class="mr-2 mt-2 required" for="plotter_function">f(x):</label>
                     <input type="text" id="plotter_function" name="plotter_function"
                            required="required" class="mr-2 mt-2 form-control" value="sin x"/>
@@ -81,6 +77,9 @@
                     <button id="plotter_download" type="button" class="btn btn-success mr-2 mt-2">download</button>
                     <button id="plotter_reset" type="button" class="btn btn-secondary mr-2 mt-2">reset view</button>
                 </form>
+                <a href="https://github.com/Erfans/Plotter" class="float-right mt-2" title="Github">
+                    <img src="GitHub-Mark-64px.png" alt="Github" style="height: 38px;">
+                </a>
             </div>
 
             <div id="canvas-container"></div>
